@@ -1,12 +1,42 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Navbar from '../components/Navbar';
+import toast from 'react-hot-toast';
+import { useParams } from "react-router-dom";
 
 const Game = () => {
+    const { userId, username } = useParams();
     const [randomNumber, setRandomNumber] = useState(0);
     const [tries, setTries] = useState(0);
     const [guess, setGuess] = useState('');
     const [highestScore, setHighestScore] = useState(0);
     const [score, setScore] = useState(0);
+
+    //get the highest score from the server
+    useEffect(() => {
+        axios.get(`https://guessing-game-api.vercel.app/cred/gethighscore/${userId}`)
+            .then((res) => {
+                setHighestScore(res.data.highestScore);
+                console.log(res.data.highestScore);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [highestScore, userId, username]);
+
+    // whenever a new highest score is achieved, send it to the server along with the userId
+    useEffect(() => {
+        axios.post('https://guessing-game-api.vercel.app/cred/highscore', {
+            userId: userId,
+            highestScore: highestScore
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [highestScore, userId, username]);
 
     // Generate a new random number between 1 and 10
     const generateRandomNumber = () => {
@@ -49,6 +79,7 @@ const Game = () => {
             // Update highest score if necessary
             if (newScore > highestScore) {
                 setHighestScore(newScore);
+                toast.success('New high score!');
             }
 
             // Reset tries and generate a new random number
@@ -83,6 +114,7 @@ const Game = () => {
         <div className='App'>
             <Navbar />
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', flexDirection:'column'}}>
+            <p style={{ color: 'white' }}>Welcome {username}</p>
 
             <div style={{ color: 'white' }}>
                 <h1>Guessing Game</h1>

@@ -27,10 +27,14 @@ const Navbar = () => {
         <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} style={{ transition: 'max-height 0.3s ease-in-out' }}>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/" style={{ fontFamily: 'Audiowide, sans-serif' }}>Home</Link>
+              {/* <Link className="nav-link" to="/game" style={{ fontFamily: 'Audiowide, sans-serif' }}>Game</Link> */}
+              <button className="nav-link"  style={{ fontFamily: 'Audiowide, sans-serif' }}
+              // onclick the back button, it will go back to the previous page
+              onClick={() => window.history.back()}
+              >Game</button>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/experience" style={{ fontFamily: 'Audiowide, sans-serif' }}>Leader Board</Link>
+              <Link className="nav-link" to="/leaderboard" style={{ fontFamily: 'Audiowide, sans-serif' }}>Leader Board</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/" style={{ fontFamily: 'Audiowide, sans-serif' }}>Logout</Link>

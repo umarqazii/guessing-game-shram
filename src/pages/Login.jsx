@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Typed from 'typed.js';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import {
     MDBContainer,
     MDBRow,
@@ -16,28 +17,31 @@ import '../App.css';
  // Import your image
 
 function Login() {
-
-    const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    window.location.href = '/game';
-    axios.post('http://localhost:4000/login', {
+    //window.location.href = '/game';
+    axios.post('https://guessing-game-api.vercel.app/cred/login', {
       username: username,
       password: password
     })
       .then((res) => {
-        console.log(res);
-
-        //display a successful toast message
+        console.log(res.data.user.username);
+        console.log(res.data.user._id);
+        const userId = res.data.user._id;
+        const username = res.data.user.username;
+        toast.success('Successfully Logged in!');
+        navigate(`/game/${userId}/${username}`);
         
       })
       .catch((err) => {
         console.log(err);
         //display an error toast message
-        
+        toast.error('Invalid username or password');
       });
 
   };
@@ -45,6 +49,8 @@ function Login() {
 
   return (
     <div className='App'>
+      <div style={{height:'100vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
+
       <MDBContainer fluid>
       <MDBRow className='d-flex justify-content-center align-items-center h-100'>
         <MDBCol col='12'>
@@ -73,6 +79,7 @@ function Login() {
       </MDBRow>
     </MDBContainer>
     
+      </div>
     </div>
   );
 }

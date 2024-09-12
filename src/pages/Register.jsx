@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Typed from 'typed.js';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import {
     MDBContainer,
     MDBRow,
@@ -16,26 +17,26 @@ import '../App.css';
  // Import your image
 
 function Register() {
-
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    window.location.href = '/game';
-    axios.post('http://localhost:4000/register', {
+    axios.post('https://guessing-game-api.vercel.app/cred/signup', {
       username: username,
       password: password
     })
       .then((res) => {
         console.log(res);
-
-        //display a successful toast message
+        toast.success('Successfully created!');
+        navigate('/');
         
       })
       .catch((err) => {
         console.log(err);
+        toast.error('username already exists');
         //display an error toast message
         
       });
@@ -44,6 +45,8 @@ function Register() {
 
   return (
     <div className='App'>
+      <div style={{height:'100vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
+
       <MDBContainer fluid>
       <MDBRow className='d-flex justify-content-center align-items-center h-100'>
         
@@ -72,6 +75,7 @@ function Register() {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+      </div>
     
     </div>
   );
