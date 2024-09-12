@@ -82,6 +82,8 @@ const Game = () => {
     return (
         <div className='App'>
             <Navbar />
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', flexDirection:'column'}}>
+
             <div style={{ color: 'white' }}>
                 <h1>Guessing Game</h1>
                 <p>Number of tries: {tries} / 3</p>
@@ -95,7 +97,7 @@ const Game = () => {
                     type="text" 
                     value={guess} 
                     readOnly // Make the input read-only since we're using buttons
-                />
+                    />
                 <button onClick={handleGuess}>Guess</button>
                 <button onClick={()=>setGuess("")} >Reset</button>
             </div>
@@ -107,12 +109,13 @@ const Game = () => {
                         key={index} 
                         style={{ width: '50px', height: '50px', fontSize: '20px' }} 
                         onClick={() => handleNumberClick(index)}
-                    >
+                        >
                         {index}
                     </button>
                 ))}
                 
             </div>
+        </div>
         </div>
     );
 };
