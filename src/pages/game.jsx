@@ -352,12 +352,19 @@ const Game = () => {
         <div style={{marginTop: "20px"}}>
 
         {guesses.length > 0 ? (
-            <p style={{ color: "white" }}>Guesses so far: {guesses.join(", ")}</p>
-        ):(
-            <p style={{ color: "white" }}>Guesses so far: ___ </p>
-        )
-        
-    }
+    <p style={{ color: "white" }}>
+        Guesses so far: {guesses.map(guess => 
+            guess < randomNumber 
+            ? `${guess} (too low)` 
+            : guess > randomNumber 
+            ? `${guess} (too high)` 
+            : `${guess} (correct)`
+        ).join(", ")}
+    </p>
+) : (
+    <p style={{ color: "white" }}>Guesses so far: ___ </p>
+)}
+
     </div>
       </div>
     </div>
