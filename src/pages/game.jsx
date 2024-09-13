@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar';
 import toast from 'react-hot-toast';
 import Confetti from 'react-confetti';
 import ProgressBar from "@ramonak/react-progress-bar";
+import { Tooltip } from 'react-tooltip'
+import 'primeicons/primeicons.css';
 import { FaFlagCheckered } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
@@ -21,7 +23,7 @@ const Game = () => {
           setShowConfetti(true);
           setTimeout(() => {
             setShowConfetti(false);
-          }, 5000); // Confetti lasts for 3 seconds
+          }, 3000); // Confetti lasts for 3 seconds
         
       }
 
@@ -126,6 +128,7 @@ const Game = () => {
 
     return (
         <div className='App'>
+            <Tooltip id="my-tooltip" />
             <Navbar />
             {showConfetti && <Confetti />}
 
@@ -136,8 +139,13 @@ const Game = () => {
                 <h1>Guessing Game</h1>
                 <p>Guess a number between 1 and 10</p>
                 <p>Number of tries: {tries} / 3</p>
-                <p>Highest score: {highestScore}</p>
-                <p>Score: {score}</p>
+                <a data-tooltip-id="my-tooltip" data-tooltip-content="High Score is the highest number of games won CONSECUTIVELY"
+                >High Score: {highestScore} &nbsp;<i className="pi pi-info-circle" style={{ color: '#fff', fontSize: '15px' }}></i></a>
+                <p></p>
+                <a data-tooltip-id="my-tooltip" data-tooltip-content="Score is the number of games won CONSECUTIVELY"
+                >Score: {score} &nbsp;<i className="pi pi-info-circle" style={{ color: '#fff', fontSize: '15px' }}></i></a>
+                {/* <p>Score: {score}</p> */}
+                <p></p>
                 <ProgressBar completed={(score).toFixed(0)} maxCompleted={highestScore} />Progress To New High Score <FaFlagCheckered />
             </div>
 
