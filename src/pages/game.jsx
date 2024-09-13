@@ -18,6 +18,7 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [guesses, setGuesses] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
+  let toastid = '';
 
   const triggerConfetti = () => {
     setShowConfetti(true);
@@ -89,9 +90,13 @@ const Game = () => {
     setTries(newTries);
 
     if (numericGuess > randomNumber) {
-      toast.error("Too high, Try a smaller number");
+      toastid = toast.error("Too high, Try a smaller number", {
+          duration: 3000,
+      });
     } else if (numericGuess < randomNumber) {
-      toast.error("Too low, Try a larger number");
+      toastid = toast.error("Too low, Try a larger number", {
+          duration: 3000,
+      });
     } else {
       toast.success("Correct!");
 
@@ -117,7 +122,8 @@ const Game = () => {
     // If player fails to guess within 3 tries
     if (newTries >= 3) {
       toast.error(
-        "Game over! The number was " + randomNumber
+        "Game over! The number was " + randomNumber ,{
+            id: toastid}
       );
       resetGame(); // Reset score, tries, and generate a new random number
     }
