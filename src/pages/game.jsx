@@ -139,7 +139,7 @@ const Game = () => {
                 <h1>Guessing Game</h1>
                 <p>Guess a number between 1 and 10</p>
                 <p>Number of tries: {tries} / 3</p>
-                <a data-tooltip-id="my-tooltip" data-tooltip-content="High Score is the highest number of games won CONSECUTIVELY"
+                <a data-tooltip-id="my-tooltip" data-tooltip-content="Highest number of games won CONSECUTIVELY"
                 >High Score: {highestScore} &nbsp;<i className="pi pi-info-circle" style={{ color: '#fff', fontSize: '15px' }}></i></a>
                 <p></p>
                 <a data-tooltip-id="my-tooltip" data-tooltip-content="Score is the number of games won CONSECUTIVELY"
