@@ -31,7 +31,7 @@ function Register() {
       .then((res) => {
         console.log(res);
         toast.success('Successfully created!');
-        navigate('/');
+        navigate('/login');
         
       })
       .catch((err) => {

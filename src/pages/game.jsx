@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import toast from 'react-hot-toast';
+import Confetti from 'react-confetti';
+import ProgressBar from "@ramonak/react-progress-bar";
+import { FaFlagCheckered } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
 const Game = () => {
@@ -11,6 +14,16 @@ const Game = () => {
     const [guess, setGuess] = useState('');
     const [highestScore, setHighestScore] = useState(0);
     const [score, setScore] = useState(0);
+    const [showConfetti, setShowConfetti] = useState(false);
+
+    const triggerConfetti = () => {
+
+          setShowConfetti(true);
+          setTimeout(() => {
+            setShowConfetti(false);
+          }, 5000); // Confetti lasts for 3 seconds
+        
+      }
 
     //get the highest score from the server
     useEffect(() => {
@@ -80,6 +93,7 @@ const Game = () => {
             if (newScore > highestScore) {
                 setHighestScore(newScore);
                 toast.success('New high score!');
+                triggerConfetti();
             }
 
             // Reset tries and generate a new random number
@@ -113,37 +127,99 @@ const Game = () => {
     return (
         <div className='App'>
             <Navbar />
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', flexDirection:'column'}}>
-            <p style={{ color: 'white' }}>Welcome {username}</p>
+            {showConfetti && <Confetti />}
 
-            <div style={{ color: 'white' }}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '91vh', flexDirection:'column'}}>
+            <p style={{ color: 'white' }}>Welcome {username}</p>
+            
+            <div style={{ color: 'white', marginBottom: '20px' }}>
                 <h1>Guessing Game</h1>
+                <p>Guess a number between 1 and 10</p>
                 <p>Number of tries: {tries} / 3</p>
                 <p>Highest score: {highestScore}</p>
                 <p>Score: {score}</p>
+                <ProgressBar completed={(score).toFixed(0)} maxCompleted={highestScore} />Progress To New High Score <FaFlagCheckered />
             </div>
 
             <div style={{ color: 'white' }}>
-                <p>Guess a number between 1 and 10</p>
-                <input 
-                    type="text" 
-                    value={guess} 
-                    readOnly // Make the input read-only since we're using buttons
-                    />
-                <button onClick={handleGuess}>Guess</button>
-                <button onClick={()=>setGuess("")} >Reset</button>
+                
+                {guess ? ( <h2>{guess}</h2>) : <h2>_ _</h2>}
+                <button onClick={handleGuess}
+                style={{
+                    width: 'auto',
+                    height: '40px',
+                    fontSize: '20px',
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease', // Smooth transition
+                    margin: '10px',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.2)'; // Grow the button
+                    e.target.style.backgroundColor = '#f0f0f0'; // Change color slightly
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)'; // Return to original size
+                    e.target.style.backgroundColor = 'white'; // Return to original color
+                  }}
+                >Guess</button>
+                <button onClick={()=>setGuess("")} 
+                style={{
+                    width: 'auto',
+                    height: '40px',
+                    fontSize: '20px',
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease', // Smooth transition
+                    margin: '10px',
+                    
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.2)'; // Grow the button
+                    e.target.style.backgroundColor = '#f0f0f0'; // Change color slightly
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)'; // Return to original size
+                    e.target.style.backgroundColor = 'white'; // Return to original color
+                  }}    
+                >Reset</button>
             </div>
 
             {/* Number grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 50px)', gap: '10px', marginTop: '20px', justifyContent: 'center' }}>
                 {Array.from({ length: 10 }, (_, index) => (
                     <button 
-                        key={index} 
-                        style={{ width: '50px', height: '50px', fontSize: '20px' }} 
-                        onClick={() => handleNumberClick(index)}
-                        >
-                        {index}
-                    </button>
+                    key={index} 
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      fontSize: '20px',
+                      backgroundColor: 'white',
+                      color: 'black',
+                      border: 'none',
+                      borderRadius: '5px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease', // Smooth transition
+                    }} 
+                    onClick={() => handleNumberClick(index)}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'scale(1.2)'; // Grow the button
+                      e.target.style.backgroundColor = '#f0f0f0'; // Change color slightly
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'scale(1)'; // Return to original size
+                      e.target.style.backgroundColor = 'white'; // Return to original color
+                    }}
+                  >
+                    {index}
+                  </button>
+                  
                 ))}
                 
             </div>
