@@ -22,6 +22,7 @@ hisghest number of games won consequetively. A leadership board is maintained to
 - **React-Hot-Toast**: To display toasts for error, success, loading etc.
 - **React-Confetti**: To pop a confetti when a player makes a new highscore.
 - **React-tooltip**: To give information to the player on hover. (used in score/highscore)
+- **Vercel**: Game is deployed on vercel. Feel free to play on desktop or your mobile phone
 
 ## How to run the Code
 
@@ -38,4 +39,9 @@ open command prompt and type:
 - Step 4
 ### `npm start`
 
+## The game is deployed to Vercel
+[Deployment link](https://guessing-game-shram.vercel.app/)
+
+## Backend Repo Link
+[Backend Repo](https://github.com/umarqazii/guessing-game-api)
 
