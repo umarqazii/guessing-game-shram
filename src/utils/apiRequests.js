@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// fetch highest score of a user from the database
 export const fetchHighestScore = async (userId, setHighestScore) => {
   try {
     const res = await axios.get(
@@ -12,6 +13,7 @@ export const fetchHighestScore = async (userId, setHighestScore) => {
   }
 };
 
+// update the highest score of a user in the database
 export const updateHighestScore = async (userId, highestScore) => {
   try {
     const res = await axios.post(
@@ -27,6 +29,7 @@ export const updateHighestScore = async (userId, highestScore) => {
   }
 };
 
+// fetch leaderboard data
 export const getLeaderboardData = async () => {
     try {
       const response = await axios.get(

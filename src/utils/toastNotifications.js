@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 
+// toast notifications
 export const showSuccessToast = (message) => {
   toast.success(message);
 };

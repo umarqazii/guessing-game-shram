@@ -14,7 +14,7 @@ import {
 import axios from 'axios';
 import logo from '../assets/logo.png'
 import '../App.css';
- // Import your image
+
 
 function Login() {
   const navigate = useNavigate();

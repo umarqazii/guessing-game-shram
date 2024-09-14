@@ -2,7 +2,7 @@
 
 This is a React-based application for a guessing game. The player will have to guess a randomly stored number between 1-10 within 3 tries.
 If they succeed, an increment will be made in the score. To keep the score on increasing you have to win games Consequetively. Highscore is the 
-hisghest number of games won consequetively. A leadership board is maintained to rank the players on the basis of their highest scores. As soon as the player makes a highest score, it will be stored in the database accordingly. 
+highest number of games won consequetively. A leadership board is maintained to rank the players on the basis of their highest scores. As soon as the player makes a highest score, it will be stored in the database accordingly. 
 
 ## Features
 
