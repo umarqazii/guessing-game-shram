@@ -280,11 +280,11 @@ const Game = () => {
               margin: "10px",
             }}
             onMouseEnter={(e) => {
-              e.target.style.transform = "scale(1.2)"; // Grow the button
-              e.target.style.backgroundColor = "#f0f0f0"; // Change color slightly
+              //e.target.style.transform = "scale(1.2)"; // Grow the button
+              e.target.style.backgroundColor = "gray"; // Change color slightly
             }}
             onMouseLeave={(e) => {
-              e.target.style.transform = "scale(1)"; // Return to original size
+              //e.target.style.transform = "scale(1)"; // Return to original size
               e.target.style.backgroundColor = "white"; // Return to original color
             }}
           >
@@ -305,11 +305,11 @@ const Game = () => {
               margin: "10px",
             }}
             onMouseEnter={(e) => {
-              e.target.style.transform = "scale(1.2)"; // Grow the button
-              e.target.style.backgroundColor = "#f0f0f0"; // Change color slightly
+              //e.target.style.transform = "scale(1.2)"; // Grow the button
+              e.target.style.backgroundColor = "gray"; // Change color slightly
             }}
             onMouseLeave={(e) => {
-              e.target.style.transform = "scale(1)"; // Return to original size
+              //e.target.style.transform = "scale(1)"; // Return to original size
               e.target.style.backgroundColor = "white"; // Return to original color
             }}
           >
@@ -343,11 +343,11 @@ const Game = () => {
               }}
               onClick={() => handleNumberClick(index)}
               onMouseEnter={(e) => {
-                e.target.style.transform = "scale(1.2)"; // Grow the button
-                e.target.style.backgroundColor = "#f0f0f0"; // Change color slightly
+                //e.target.style.transform = "scale(1.2)"; // Grow the button
+                e.target.style.backgroundColor = "gray"; // Change color slightly
               }}
               onMouseLeave={(e) => {
-                e.target.style.transform = "scale(1)"; // Return to original size
+                //e.target.style.transform = "scale(1)"; // Return to original size
                 e.target.style.backgroundColor = "white"; // Return to original color
               }}
             >

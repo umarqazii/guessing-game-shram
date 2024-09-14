@@ -6,10 +6,11 @@ import Register from './pages/Register';
 import Leaderboard from './pages/Leaderboard';
 import SplashScreen from './pages/SplashScreen';
 import toast, { Toaster } from 'react-hot-toast';
-import './App.css';
+//import './App.css';
 
 function App() {
   return (
+    <>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SplashScreen />} />
@@ -20,6 +21,7 @@ function App() {
       </Routes>
       <Toaster />
     </BrowserRouter>
+    </>
   );
 }
 

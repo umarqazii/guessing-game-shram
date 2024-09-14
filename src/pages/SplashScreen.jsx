@@ -22,7 +22,7 @@ const SplashScreen = () => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#282c34',
+        backgroundColor: '#3e4450',
         opacity: loading ? 1 : 0,
         transition: 'opacity 3s ease-in-out',
       }}

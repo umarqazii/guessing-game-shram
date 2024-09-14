@@ -13,7 +13,7 @@ import {
   } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import logo from '../assets/logo.png'
-import '../App.css';
+//import '../App.css';
  // Import your image
 
 function Register() {
@@ -66,7 +66,7 @@ function Register() {
 
               <div>
                 <br></br>
-                <p>Already have an account? <Link to="/">Login</Link></p>
+                <p>Already have an account? <Link to="/login">Login</Link></p>
                 <br></br>
                 
               </div>

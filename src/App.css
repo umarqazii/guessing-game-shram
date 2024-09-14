@@ -1,8 +1,10 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #3e4450;
   min-height: 100vh;
 }
+
+
 
 .App-logo {
   height: 40vmin;
@@ -53,3 +55,4 @@
 .custom-btn:hover {
   background-color: #0056b3; /* Set your desired background color on hover */
 }
+
