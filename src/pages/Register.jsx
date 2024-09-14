@@ -8,8 +8,7 @@ import {
     MDBCol,
     MDBCard,
     MDBCardBody,
-    MDBInput,
-    MDBCheckbox
+    MDBInput
   } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import logo from '../assets/logo.png'
